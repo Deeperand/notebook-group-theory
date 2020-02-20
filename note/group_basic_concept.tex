@@ -1,0 +1,43 @@
+\chapter{Basic Conception of Group}
+\section{群及其乘法表}
+    \paragraph{群的基本概念}
+        \begin{Definition}[群]
+            在规定了元素的乘法后, 元素的集合 $G$ 若满足下面四条公理, 则这个集合可被称为\,\textbf{群}\,:
+            \begin{enumerate}
+                \item \textbf{封闭性 :} 任意两元素的乘积仍然属于这个集合. 亦即:
+                    \begin{equation}
+                        RS \in G, \quad \forall R, S \in G
+                    \end{equation}
+                \item \textbf{结合律 :} 乘积满足结合律, 亦即:
+                    \begin{equation}
+                        R (ST) = (RS) T, \quad \forall R,\ S,\ T\ \in G
+                    \end{equation}
+                \item \textbf{存在单位元 :} 存在一个被称为单位元的元素 $E$, 用它左乘任意元素, 该元素均保持不变. 亦即:
+                    \begin{equation}
+                        ER = R, \forall R \in G
+                    \end{equation}
+                \item \textbf{任何元素存在逆元 :} 任意元素 $R$ 均存在对应的逆元 $R^{-1}$, 其定义为:
+                    \begin{equation}
+                        R^{-1} R = E
+                    \end{equation}
+                    亦即元素与其逆元的乘积等于单位元.
+            \end{enumerate}
+        \end{Definition}
+
+        \begin{Definition}[群的阶数]
+            群 $G$ 的群元素的个数 $g$ 称为群 $G$ 的阶数.
+        \end{Definition}
+
+        \begin{Definition}[群元素的阶数]
+            若群 $G$ 中的群元 $R$ 满足:
+                \begin{equation}
+                    R^{a} = E, \quad a \in \mathbb{Z}^{+}
+                \end{equation}
+            则称 $a$ 为群元素 $R$ 的阶数
+        \end{Definition}
+        \hspace*{2em} 应当注意, 群中每一个元素存在逆元并不意味着奇数阶群不存在, 因为群元自身可以是自身的逆元, 而这并不只有单位元可以做到. 反过来说, \CJKunderwave{对于奇数阶群, 一定有恒元以外的阶数为 2 的元素.}
+
+        \textbf{Notation :}
+        \begin{enumerate}
+            \item 不难证明: \CJKunderwave{若一个群\ $G$ 中含有二阶元素, 则该二阶元素与幺元素构成该群的一个子群}
+        \end{enumerate}
