@@ -1,6 +1,10 @@
 \chapter{Basic Conception of Group}
 \section{群及其乘法表}
     \paragraph{群的基本概念}
+        \begin{Concept}[对称变换]
+            保持系统不变的变换称为\,\textbf{对称变换}.
+        \end{Concept}
+
         \begin{Definition}[群]
             在规定了元素的乘法后, 元素的集合 $G$ 若满足下面四条公理, 则这个集合可被称为\,\textbf{群}\,:
             \begin{enumerate}
@@ -24,20 +28,78 @@
             \end{enumerate}
         \end{Definition}
 
-        \begin{Definition}[群的阶数]
-            群 $G$ 的群元素的个数 $g$ 称为群 $G$ 的阶数.
-        \end{Definition}
+        \hspace*{2em}可以看到, 在对单位元及逆元进行定义的时候, 只定义了左乘, 那么单位元右乘或逆元右乘时, 还会有相同的性质吗? 实际上, 从基本定义出发, 可以得到以下推论:
 
-        \begin{Definition}[群元素的阶数]
-            若群 $G$ 中的群元 $R$ 满足:
+            \begin{Property}[恒元及逆元的右乘]
+                \hspace*{2em}
+                \begin{enumerate}
+                    \item \textbf{恒元右乘:} 恒元右乘时, 同样保有恒元的性质, 亦即:
+                        \begin{equation}
+                            RE = R
+                        \end{equation}
+                    \item \textbf{逆元右乘:} 逆元右乘时, 还是得到恒元. 换而言之, 逆元 $R^{-1}$ 的逆, 恰是 $R$ 自身:
+                        \begin{align}
+                            RR^{-1} &= E \\
+                            (R^{-1})^{-1} &= R
+                        \end{align}
+                \end{enumerate}
+            \end{Property}
+
+        \hspace*{2em}可以看见, 对于恒元及逆元, 其运算是可交换的, 这个性质对所有群均成立. 由于恒元及逆元在乘法运算上的对称性, 在之后讨论或证明相关性质时, 可以只考虑一个方向上的乘法. 由恒元及逆元的右乘的性质出发, 不难得出恒元及逆元的唯一性:
+
+            \begin{Property}[恒元及逆元的唯一性]
+                \hspace*{2em}
+                \item \textbf{恒元的唯一性:} 若 $TR = R$ 或 $RT = R$, 则 $T = E$.
+                \item \textbf{逆元的唯一性:} 若 $TR = E$ 或 $RT = E$, 则 $T = R^{-1}$.
+            \end{Property}
+
+        \hspace*{2em}一般而言, 除了恒元及逆元外, 一般元素之间的乘法是不可对易的, 但也存在如实数加法群这样的乘法可对易的群, 于是有了\,\textbf{阿贝尔群}\,的概念:
+
+            \begin{Concept}[阿贝尔群]
+                元素乘积都可对易的群称为\,\textbf{阿贝尔群}.
+            \end{Concept}
+
+        \hspace*{2em}按照群元素的数目, 可以定义\,\textbf{群的阶数:}\,
+
+            \begin{Definition}[群的阶数]
+                群 $G$ 的群元素的个数 $g$ 称为群 $G$ 的阶数.
+            \end{Definition}
+
+        \hspace*{2em}还可以对群的阶数进行更细致的讨论:
+
+            \begin{Concept}[无限群]
+                群元数目无限多的群称为\,\textbf{无限群.}\,
+            \end{Concept}
+
+            \begin{Concept}[连续群]
+                若可以建立群元到一组连续参数的一一映射, 则这样的群称为\,\textbf{连续群.}\,
+            \end{Concept}
+            连续群的一个例子是之后将要接触到的\,\textbf{李群.}\,
+
+        \hspace*{2em}对于有限群, 由于群元素的有限性, 群中任一元素的幂次足够高时, 其总会回归到自身. 如: 对于 6 阶群 $G_{6}$, 其只有 6 个不同的元素. 设 $R \in G_{6}$, 对于 $R^n$, 在 $n > 6$ 之前, 一定会出现 $R^n = R$ 的情形, 因为 6 阶群不可能有 7 个不同元素. 由此可以引出\,\textbf{群元素的阶数}\,的定义:
+
+            \begin{Definition}[群元素的阶数]
+                若群 $G$ 中的群元 $R$ 满足:
+                    \begin{equation}
+                        R^{a} = E, \quad a \in \mathbb{Z}^{+}
+                    \end{equation}
+                则称 $a$ 为群元素 $R$ 的阶数
+            \end{Definition}
+
+        \begin{Definition}[群的同构]
+            若存在一个从群 $G$ 到群 $G'$ 的一一映射 $f$:
                 \begin{equation}
-                    R^{a} = E, \quad a \in \mathbb{Z}^{+}
+                    f: G \to G', R \mapsto R'
                 \end{equation}
-            则称 $a$ 为群元素 $R$ 的阶数
+            若 $\forall R, S \in G, R' = f(R), S' = f(S)$, 满足:
+                \begin{equation}
+                    F(R, S) = F'(R', S')
+                \end{equation}
+            即称 $G$ 与 $G'$ 同构, 记为 $G \approx G'$. 其中 $F$, $F'$ 分别表示两群的群乘法.
         \end{Definition}
-        \hspace*{2em} 应当注意, 群中每一个元素存在逆元并不意味着奇数阶群不存在, 因为群元自身可以是自身的逆元, 而这并不只有单位元可以做到. 反过来说, \CJKunderwave{对于奇数阶群, 一定有恒元以外的阶数为 2 的元素.}
 
         \textbf{Notation :}
         \begin{enumerate}
+            \item 群中每一个元素存在逆元并不意味着奇数阶群不存在, 因为单位元自身是自身的逆元. 因此此时除了单位元以外的元素为偶数个, 从而可以成对儿地提取出元素以及它的逆元.
             \item 不难证明: \CJKunderwave{若一个群\ $G$ 中含有二阶元素, 则该二阶元素与幺元素构成该群的一个子群}
         \end{enumerate}
