@@ -1,6 +1,6 @@
 \chapter{Basic Conception of Group}
 \section{群及其乘法表}
-    \paragraph{群的基本概念}
+    \subsection{群的基本概念}
         \begin{Concept}[对称变换]
             保持系统不变的变换称为\,\textbf{对称变换}.
         \end{Concept}
@@ -86,6 +86,47 @@
                 则称 $a$ 为群元素 $R$ 的阶数
             \end{Definition}
 
+        \hspace*{2em}群论中有一个名为\,\textbf{重排定理}\,的基本定理, 为更方便地对其进行表述, 首先引入\,\textbf{复元素}\,的概念:
+
+            \begin{Concept}[复元素]
+                在群 $G$ 中选取一个子集 $R$, 将该子集 $R$ 称为群 $G$ 的一个复元素.
+            \end{Concept}
+
+        从定义可以发现, 复元素的本质是一个集合, 因此满足集合的\,\textbf{无序性}, \textbf{确定性}, \textbf{互异性}\, 等基本性质. 此外, \CJKunderwave{两复元素 $R_1$, $R_2$ 相等的充要条件是它们所包含的元素完全相同.} 这一点和一般的集合相等是完全一致的. 在有了复元素的基本概念之后, 需要考虑的是如何定义复元素与普通元素的乘法:
+
+            \begin{Definition}[复元素与普通元素的乘法]
+                复元素乘上普通元素仍然得到一个复元素, 该复元素由该普通元素分别与原本复元素的每一元素相乘得到. 亦即, 若 $R = \{r_i\}$, $s$ 为一普通元素, 则:
+                    \begin{equation}
+                        sR := \{s r_i\}, Rs:= \{r_i s\}
+                    \end{equation}
+            \end{Definition}
+
+        复元素也可与复元素相乘, 其结果是所有乘积组合形成的新集合, 即:
+
+            \begin{Definition}[复元素与复元素相乘]
+                若 $R = \{r_i\}$, $S = \{s_i\}$, 则:
+                    \begin{equation}
+                        RS := \{r_i s_j\}, SR := \{s_i r_j\}
+                    \end{equation}
+            \end{Definition}
+
+        接下来正式介绍重排定理:
+
+            \begin{Theorem}[重排定理]
+                用 $G$ 表示群中所有元素构成的复元素, $G^{-1}$ 表示群中所有元素的逆元素构成的复元素, $T$ 为群中任一普通元素, 于是:
+                    \begin{equation}
+                        TG = GT = G^{-1} = G
+                    \end{equation}
+            \end{Theorem}
+
+        \hspace*{2em}对于有限群, 可以把群中每一对乘积得到的结果都列出来形成一张表, 由此引出\,\textbf{乘法表}\,的概念:
+
+            \begin{Concept}[乘法表]
+                对于有限群, 在行与列都填满该群中的所有元素. 若记 $R = \{r_i\}$ 在第 $i$ 行第 $j$ 列的位置, 填上元素 $r_i$ 右乘 $r_j$ 的结果 $r_i r_j$, 由此形成的表称为乘法表.
+            \end{Concept}
+
+        可以预见, \CJKunderwave{对于阿贝尔群, 乘法表是关于对角线对称的.}
+
         \begin{Definition}[群的同构]
             若存在一个从群 $G$ 到群 $G'$ 的一一映射 $f$:
                 \begin{equation}
@@ -100,6 +141,56 @@
 
         \textbf{Notation :}
         \begin{enumerate}
-            \item 群中每一个元素存在逆元并不意味着奇数阶群不存在, 因为单位元自身是自身的逆元. 因此此时除了单位元以外的元素为偶数个, 从而可以成对儿地提取出元素以及它的逆元.
+            \item 对于奇数阶群, 因为单位元自身是自身的逆元. 因而此时除了单位元以外的元素为偶数个, 从而可以成对儿地提取出元素以及它的逆元; 对于偶数阶群, 由于除了单位元外的元素为奇数个, 因此必然有元素其逆元是自身, 也就是说, \CJKunderwave{偶数阶群必然存在二阶元素.}
             \item 不难证明: \CJKunderwave{若一个群\ $G$ 中含有二阶元素, 则该二阶元素与幺元素构成该群的一个子群}
         \end{enumerate}
+
+    \subsection{群的生成元与秩}
+        \hspace*{2em}前面提到过, 有限群的元素有阶数的概念. 也就是说: 或许可以只用很少的几个元素以及它们的幂来构造出该群的所有元素, 这就涉及到下面将介绍的\,\textbf{生成元}\,的概念:
+
+            \begin{Definition}[循环群与生成元]
+                由一个元素 $R$ 及其幂次构成的有限群称为由 $R$ 生成的循环群, 记为 $C_n$. $n$ 称为\,\textbf{循环群的阶}, $R$ 称为\,\textbf{循环群的生成元}. 一般地, 循环群 $C_n$ 可以被描述为:
+                    \begin{equation}
+                        C_n = \{E, R, R^{1}, R^{2}, \dots , R^{n-1}\}, R^{n} = E
+                    \end{equation}
+            \end{Definition}
+
+        对于 $n$ 阶循环群, \CJKunderwave{其阶数等于其生成元的阶数.} 此外, 不难得知:
+            \begin{equation}
+                R^{-1} = R^{1-n}
+            \end{equation}
+
+        更一般地, 若用记号 $j\ \mathrm{mod}\ N$ 来表示 $j$ 整除 $N$ 后的余数, 则对于 $n$ 阶循环群 $C_n$, 有:
+            \begin{equation}
+                R^{a} = R^{a\ \mathrm{mod}\ N}
+            \end{equation}
+
+        于是可可以从循环的角度来理解模运算: $j \mathrm{mod} N$ 表示将取值相差 $N$ 的两个 $j$ 看成相同的.
+
+        \hspace*{2em}以上只讨论了对于循环群如何定义阶数, 那么, 对任一有限群, 能否定义阶数以及生成元呢? 答案是肯定的, 由此还能引出有限群的秩的概念:
+
+            \begin{Definition}[有限群的生成元与秩]
+                对于群 $G$, 任取一个元素 $R_1$, 若其幂次构成的集合尚无法填满整个群, 那么再取下一个元素 $R_2$, 并考虑 $R_2$ 的幂次构成的集合. 如此反复操作, 直至由取出的元素的幂次构成的元素集合的并集能够填满整个群为止, 将这些基本元素的集合 $\{R_i\}$ 称为群 $G$ 的\,\textbf{生成元}, 集合 $\{R_i\}$ 中元素的数目称为该群的\,\textbf{秩}.
+            \end{Definition}
+
+        \hspace*{2em}生成元的概念在之后学习李群时可以做进一步推广, 这一点可以做如下理解: 在经典的微积分理论中, 任一一种变换可以进行泰勒展开, 而泰勒展开本质上是一系列的幂次相加, 这些幂次就有点类似这里介绍的生成元. 也就是说, 连续群也可以找到一些基本元素, 由这些基本元素的运算来得到整个连续群的性质.
+
+\section{群的各种子集}
+    \subsection{子群}
+        \begin{Definition}[子群]
+            若群 $G$ 的一个子集 $H$, 按照原本的群乘法规则仍然构成群, 则称其为群 $G$ 的一个\,\textbf{子群}.
+        \end{Definition}
+
+        \begin{Definition}[循环子群]
+            群 $G$ 中任一元素的幂次构成的群称为群 $G$ 的一个循环子群.
+        \end{Definition}
+
+        不难得知, \CJKunderwave{循环子群同构于相同阶数的循环群.}
+
+        \textbf{Notation :}
+        \begin{enumerate}
+            \item 按照之前关于复元素的定义, 可知: \CJKunderwave{子群本身也是一种复元素.} 这为之后介绍陪集的概念带来了方便.
+        \end{enumerate}
+
+    \subsection{陪集和不变子群}
+
